@@ -1,0 +1,25 @@
+{
+  "name": "zen-camp-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^1.1.2",
+    "axios": "^0.16.2",
+    "body-parser": "^1.18.1",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "express-graphql": "^0.6.11",
+    "from": "^0.1.7",
+    "graphql": "^0.11.3",
+    "morgan": "^1.8.2",
+    "xml2js": "^0.4.19"
+  }
+}
