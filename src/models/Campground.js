@@ -18,7 +18,7 @@ function constructGetDetailsUrl(options) {
 
 function parseList(xml) {
   return new Promise((resolve, reject) => {
-    parseString(xml, function (err, result) {
+    parseString(xml, (err, result) => {
       if (err || !result.resultset || !Array.isArray(result.resultset.result)) {
         reject('There was an error parsing the campground data');
 
@@ -32,7 +32,7 @@ function parseList(xml) {
 
 function parseDetail(xml) {
   return new Promise((resolve, reject) => {
-    parseString(xml, function (err, result) {
+    parseString(xml, (err, result) => {
       if (err || !result.detailDescription || !result.detailDescription['$']) {
         reject('There was an error parsing the campground data');
         

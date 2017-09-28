@@ -3,10 +3,11 @@ module.exports = `
     contractID: String
     facilityID: String
     facilityName: String
-    facilityPhoto: String
+    faciltyPhoto: String
     availabilityStatus: String
     latitude: String
     longitude: String
+    sitesWithPetsAllowed: String
     sitesWithWaterHookup: String
     sitesWithWaterfront: String
     state: String
