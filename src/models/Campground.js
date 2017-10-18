@@ -25,7 +25,8 @@ function parseList(xml) {
         return false;
       }
 
-      resolve(result.resultset.result.map(item => item['$']));
+      // only return the first 50, otherwise the result set is too overwhelming
+      resolve(result.resultset.result.slice(0, 50).map(item => item['$']));
     });
   });
 }

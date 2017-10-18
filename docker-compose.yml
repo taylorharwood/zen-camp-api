@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    env_file: .env
+    build: .
+    volumes:
+      - ./src:/usr/src/app/src
+    ports:
+      - "8080:8080"

@@ -30,6 +30,10 @@ module.exports = `
     regionName: String
     webUrl: String
   }
+  
+  type User {
+    username: String
+  }
 
   type Query {
     getCampgrounds(
@@ -42,5 +46,9 @@ module.exports = `
     ): [Campground]!
 
     getCampgroundDetail(parkId: String!, contractID: String!): CampgroundDetail!
+  }
+  
+  type Mutation {
+    login(username: String!, password: String!): User
   }
 `;
