@@ -26,4 +26,4 @@ app.use('/graphiql', apolloServerExpress.graphiqlExpress({
 app.use('/graphql', bodyParser.json(), apolloServerExpress.graphqlExpress({ schema: graphQLSchema }));
 
 app.listen(process.env.PORT || PORT);
-console.log('Listening on port ' + process.env.PORT || PORT);
+console.log('Listening on port ' + (process.env.PORT || PORT));

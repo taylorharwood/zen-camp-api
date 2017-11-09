@@ -46,19 +46,27 @@ function parseDetail(xml) {
 }
 
 module.exports = class Campground {
-  static getList(options) {
-    return axios.get(`${process.env.ACTIVE_CAMPGROUND_SEARCH_API_URL}?${constructGetListUrl(options)}`)
-      .then(resp => parseList(resp.data))
-      .catch(err => {
-        console.log('error fetching campground list data:', err);
-      });
+  static async getList(options) {
+    let resp;
+
+    try {
+      resp = await axios.get(`${process.env.ACTIVE_CAMPGROUND_SEARCH_API_URL}?${constructGetListUrl(options)}`);
+    } catch(e) {
+      console.log('error fetching campground list data:', e); 
+    }
+
+    return parseList(resp.data);
   }
 
-  static getDetail(options) {
-    return axios.get(`${process.env.ACTIVE_CAMPGROUND_DETAILS_API_URL}?${constructGetDetailsUrl(options)}`)
-      .then(resp => parseDetail(resp.data))
-      .catch(err => {
-        console.log('error fetching campground detail data:', err);
-      });
+  static async getDetail(options) {
+    let resp;
+
+    try {
+      resp = await axios.get(`${process.env.ACTIVE_CAMPGROUND_DETAILS_API_URL}?${constructGetDetailsUrl(options)}`);
+    } catch(e) {
+      console.log('error fetching campground detail data:', err); 
+    }
+
+    return parseDetail(resp.data);
   }
 };
