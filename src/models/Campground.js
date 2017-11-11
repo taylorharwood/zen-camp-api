@@ -6,8 +6,8 @@ function constructGetListUrl(options) {
         longitude = `&landmarkLong=${options.longitude}`,
         siteType = options.siteType ? `&siteType=${options.siteType}` : '',
         amenity = options.amenity ? `&amenity=${options.amenity}` : '',
-        maxpeople = options.maxpeople ? `&Maxpeople=${options.maxpeople}` : '',
-        waterfront = options.waterfront ? `&waterfront=3011` : '';
+        maxpeople = options.maxPeople ? `&Maxpeople=${options.maxPeople}` : '',
+        waterfront = options.waterfront ? `&waterfront=${options.waterfront}` : '';
 
   return `landmarkName=true&${latitude}${longitude}${siteType}${amenity}${maxpeople}${waterfront}&xml=true&expwith=1&expfits=1&api_key=${process.env.ACTIVE_CAMPGROUND_API_KEY}`;
 }
@@ -19,8 +19,15 @@ function constructGetDetailsUrl(options) {
 function parseList(xml) {
   return new Promise((resolve, reject) => {
     parseString(xml, (err, result) => {
-      if (err || !result.resultset || !Array.isArray(result.resultset.result)) {
+      if (err) {
+        console.error(err);
         reject('There was an error parsing the campground data');
+
+        return false;
+      }
+
+      if (!result.resultset || !Array.isArray(result.resultset.result)) {
+        resolve([]);
 
         return false;
       }
@@ -35,6 +42,7 @@ function parseDetail(xml) {
   return new Promise((resolve, reject) => {
     parseString(xml, (err, result) => {
       if (err || !result.detailDescription || !result.detailDescription['$']) {
+        console.error(err);
         reject('There was an error parsing the campground data');
         
         return false;
