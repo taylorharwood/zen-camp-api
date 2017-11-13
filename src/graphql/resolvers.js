@@ -1,13 +1,27 @@
-const Campground = require('../models/Campground');
+const { CampgroundAPI, User } = require('../models');
 
 module.exports = {
   Query: {
     getCampgrounds(obj, args, context, info) {
-      return Campground.getList(args);
+      return CampgroundAPI.getList(args);
     },
 
     getCampgroundDetail(obj, args, context, info) { 
-      return Campground.getDetail(args);
+      return CampgroundAPI.getDetail(args);
+    }
+  },
+
+  Mutation: {
+    createUser(obj, args, context, info) {
+      return User.create({
+        username: args.username,
+        password: args.password
+      });
+    },
+
+    // todo:
+    loginUser(obj, args, context, info) {
+      return new Promise();
     }
   }
 };
