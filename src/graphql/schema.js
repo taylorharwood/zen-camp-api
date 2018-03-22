@@ -31,21 +31,10 @@ module.exports = `
     webUrl: String
   }
 
-  type UserCampground {
-    facilityName: String!
-    facilityID: String!
-  }
-  
-  type User {
-    username: String!
-    password: String!
-    campgrounds: [UserCampground!]!
-  }
-
   type Query {
     getCampgrounds(
-      latitude: String!, 
-      longitude: String!, 
+      latitude: String!,
+      longitude: String!,
       siteType: String,
       amenity: String,
       maxpeople: String,
@@ -53,10 +42,5 @@ module.exports = `
     ): [Campground]!
 
     getCampgroundDetail(parkId: String!, contractID: String!): CampgroundDetail!
-  }
-  
-  type Mutation {
-    createUser(username: String!, password: String!): User,
-    loginUser(username: String!, password: String!): User
   }
 `;

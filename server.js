@@ -12,8 +12,6 @@ const PORT = 8080;
 
 const app = express();
 
-require('./src/models/index');
-
 // todo: restrict to certain domains
 app.use(cors());
 

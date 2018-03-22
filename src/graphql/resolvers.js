@@ -1,4 +1,4 @@
-const { CampgroundAPI, User } = require('../models');
+const CampgroundAPI = require('../models/CampgroundAPI');
 
 module.exports = {
   Query: {
@@ -6,22 +6,8 @@ module.exports = {
       return CampgroundAPI.getList(args);
     },
 
-    getCampgroundDetail(obj, args, context, info) { 
+    getCampgroundDetail(obj, args, context, info) {
       return CampgroundAPI.getDetail(args);
-    }
-  },
-
-  Mutation: {
-    createUser(obj, args, context, info) {
-      return User.create({
-        username: args.username,
-        password: args.password
-      });
-    },
-
-    // todo:
-    loginUser(obj, args, context, info) {
-      return new Promise();
     }
   }
 };
